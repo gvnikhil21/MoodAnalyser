@@ -14,19 +14,24 @@ public class MoodAnalyser {
 		// welcome message
 		System.out.println("Welcome to Mood Analyser!");
 		MoodAnalyser moodAnalyser = new MoodAnalyser("\"I am in Happy mood\"");
-		String mood = moodAnalyser.analyseMood();
-		System.out.println("My mood is " + mood);
+		String mood;
+		try {
+			mood = moodAnalyser.analyseMood();
+			System.out.println("My mood is " + mood);
+		} catch (MoodAnalysisException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	// analyse sad or happy mood
-	public String analyseMood() {
+	public String analyseMood() throws MoodAnalysisException {
 		try {
 			if (message.contains("Sad"))
 				return "SAD";
 			else
 				return "HAPPY";
 		} catch (NullPointerException e) {
-			return "HAPPY";
+			throw new MoodAnalysisException("NULL");
 		}
 	}
 }
