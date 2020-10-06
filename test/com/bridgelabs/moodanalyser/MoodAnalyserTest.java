@@ -40,5 +40,4 @@ public class MoodAnalyserTest {
 			assertEquals("NULL", e.getMessage());
 		}
 	}
-
 }
